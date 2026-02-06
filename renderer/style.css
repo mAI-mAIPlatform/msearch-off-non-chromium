@@ -1,265 +1,55 @@
-/* =========================
-   RESET & BASE
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
 body {
-  height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
-  overflow: hidden;
+  margin: 0;
+  font-family: system-ui;
+  background: #0e0f12;
+  color: white;
 }
 
-/* =========================
-   LAYOUT GLOBAL
-========================= */
-.app {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-}
-
-/* =========================
-   SIDEBAR mAI
-========================= */
-.sidebar {
-  width: 320px;
-  min-width: 320px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.sidebar h2 {
-  font-size: 18px;
-  font-weight: 600;
-  opacity: 0.9;
-}
-
-/* iframe mAI */
-.ai-frame {
-  flex: 1;
-  width: 100%;
-  border-radius: 18px;
-  border: none;
-  background: rgba(0,0,0,0.2);
-}
-
-/* Version */
-.version {
-  font-size: 12px;
-  text-align: center;
-  opacity: 0.6;
-  margin-top: 6px;
-}
-
-/* =========================
-   MAIN CONTENT
-========================= */
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* =========================
-   TOPBAR
-========================= */
+/* Topbar */
 .topbar {
+  height: 70px;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding: 10px 18px;
+
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.06);
 }
 
-/* Barre de recherche */
+/* LOGO */
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+/* Search */
 #search {
   flex: 1;
-  height: 42px;
-  padding: 0 18px;
-  border-radius: 999px;
+  padding: 10px 16px;
+  border-radius: 20px;
   border: none;
-  outline: none;
-  font-size: 15px;
-  color: white;
-  background: rgba(255,255,255,0.22);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  backdrop-filter: blur(10px);
-  transition: all 0.25s ease;
 }
 
-#search::placeholder {
-  color: rgba(255,255,255,0.65);
-}
-
-#search:focus {
-  background: rgba(255,255,255,0.32);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
-}
-
-/* Boutons topbar */
-.topbar button {
-  height: 42px;
-  padding: 0 18px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  color: white;
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(10px);
-  transition: all 0.25s ease;
-}
-
-.topbar button:hover {
-  background: rgba(255,255,255,0.35);
-}
-
-/* =========================
-   WELCOME / HOME
-========================= */
-.welcome {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  opacity: 0.9;
-}
-
-.welcome h1 {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  text-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-
-.welcome p {
-  font-size: 16px;
-  opacity: 0.75;
-}
-
-/* =========================
-   SETTINGS PAGE
-========================= */
-.settings-container {
-  max-width: 760px;
-  margin: auto;
-  padding: 40px;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-}
-
-.settings-container h1 {
-  font-size: 32px;
-  margin-bottom: 6px;
-}
-
-.settings-subtitle {
-  opacity: 0.65;
-  margin-bottom: 30px;
-}
-
-.settings-section {
-  margin-bottom: 32px;
-}
-
-.settings-section h2 {
-  font-size: 18px;
-  margin-bottom: 14px;
-  opacity: 0.9;
-}
-
-/* =========================
-   TOGGLES
-========================= */
-.toggle {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.toggle input {
-  display: none;
-}
-
-.slider {
-  width: 52px;
-  height: 28px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 999px;
-  position: relative;
-  cursor: pointer;
-  transition: background 0.25s ease;
-}
-
-.slider::before {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  top: 3px;
-  left: 3px;
-  border-radius: 50%;
-  background: white;
-  transition: transform 0.25s ease;
-}
-
-.toggle input:checked + .slider {
-  background: rgba(120, 180, 255, 0.6);
-}
-
-.toggle input:checked + .slider::before {
-  transform: translateX(24px);
-}
-
-.label-text {
-  opacity: 0.85;
-}
-
-/* =========================
-   BUTTONS
-========================= */
+/* Buttons */
 button {
-  border-radius: 999px;
+  border-radius: 14px;
+  padding: 8px 14px;
   border: none;
   cursor: pointer;
 }
 
-button.danger {
-  padding: 10px 18px;
-  background: rgba(255, 80, 80, 0.35);
-  color: white;
-  margin-right: 10px;
+/* Sidebar */
+.sidebar {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 320px;
+  bottom: 0;
 }
 
-button.danger:hover {
-  background: rgba(255, 80, 80, 0.55);
-}
-
-/* =========================
-   SETTINGS FOOTER
-========================= */
-.settings-footer {
-  margin-top: 40px;
-  opacity: 0.65;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.sidebar iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
