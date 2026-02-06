@@ -3,9 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>mSearch</title>
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+input {
+  width: 60%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+h1 {
+  margin-bottom: 20px;
+}
+</style>
 </head>
 <body>
-<h1>Bienvenue sur mSearch 🚀</h1>
-<input type="text" placeholder="Recherche...">
+<h1>mSearch 🚀</h1>
+<input type="text" id="search" placeholder="Tape un site, ex: google.com">
+<script src="index.js"></script>
 </body>
 </html>
