@@ -11,9 +11,10 @@
     "electron-builder": "^24.0.0"
   },
   "build": {
-    "appId": "com.msearch.browser",
-    "productName": "mSearch",
-    "directories": { "output": "dist" },
-    "win": { "target": "nsis" }
+  "appId": "com.msearch.browser",
+  "productName": "mSearch",
+  "directories": { "output": "dist" },
+  "win": { "target": "nsis" },
+  "publish": null
   }
 }
