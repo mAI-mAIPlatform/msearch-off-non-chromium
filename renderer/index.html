@@ -2,23 +2,46 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>mSearch 🚀</title>
-  
-  <!-- CSS Liquid Glass -->
+  <title>mSearch</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container">
-    <h1>mSearch 🚀</h1>
-    
-    <!-- Barre de recherche -->
-    <input type="text" id="search" placeholder="Tape un site, ex: google.com">
-    
-    <!-- Exemple bouton futur (optionnel) -->
-    <button id="goBtn">Go</button>
+  <div class="app">
+
+    <!-- SIDEBAR mAI -->
+    <aside class="sidebar">
+      <h2>mAI 🤖</h2>
+
+      <iframe
+        src="https://m-ai-officiel.base44.app"
+        class="ai-frame">
+      </iframe>
+
+      <div class="version">
+        v26.7.0 • Bêta 0.2
+      </div>
+    </aside>
+
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="main">
+
+      <header class="topbar">
+        <input id="search" placeholder="Rechercher ou taper une URL…">
+        <button id="goBtn">Go</button>
+        <button id="settingsBtn">⚙️</button>
+      </header>
+
+      <div class="welcome">
+        <h1>mSearch 🚀</h1>
+        <p>Ton navigateur perso + IA intégrée</p>
+      </div>
+
+    </main>
+
   </div>
 
-  <!-- JS pour navigation -->
   <script src="index.js"></script>
 </body>
 </html>
