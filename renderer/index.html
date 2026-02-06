@@ -1,47 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>mSearch</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="app">
 
-    <!-- SIDEBAR mAI -->
-    <aside class="sidebar">
-      <h2>mAI 🤖</h2>
+  <!-- Topbar -->
+  <header class="topbar">
 
-      <iframe
-        src="https://m-ai-officiel.base44.app"
-        class="ai-frame">
-      </iframe>
+    <!-- LOGO -->
+    <img src="../assets/logo.png" class="logo" />
 
-      <div class="version">
-        v26.7.0 • Bêta 0.2
-      </div>
-    </aside>
+    <input
+      id="search"
+      placeholder="Rechercher ou entrer une URL..."
+    />
 
+    <button id="goBtn">Go</button>
+    <button id="newTabBtn">+</button>
+    <button id="favBtn">⭐</button>
 
-    <!-- CONTENU PRINCIPAL -->
-    <main class="main">
+  </header>
 
-      <header class="topbar">
-        <input id="search" placeholder="Rechercher ou taper une URL…">
-        <button id="goBtn">Go</button>
-        <button id="settingsBtn">⚙️</button>
-      </header>
-
-      <div class="welcome">
-        <h1>mSearch 🚀</h1>
-        <p>Ton navigateur perso + IA intégrée</p>
-      </div>
-
-    </main>
-
-  </div>
+  <!-- Sidebar mAI -->
+  <aside class="sidebar">
+    <iframe src="https://m-ai-officiel.base44.app"></iframe>
+  </aside>
 
   <script src="index.js"></script>
+
 </body>
 </html>
