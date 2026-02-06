@@ -1,5 +1,5 @@
-const fs = require("fs");
 const path = require("path");
+const { readJson, writeJson } = require("../storage/jsonStore");
 
 const settingsPath = path.join(__dirname, "settings.json");
 
@@ -7,19 +7,33 @@ const defaultSettings = {
   theme: "dark",
   homepage: "https://www.google.com",
   searchEngine: "https://www.google.com/search?q=",
-  sidebarEnabled: true
+  sidebarEnabled: true,
+  language: "fr",
+  restoreSession: true,
+  openTabsInBackground: false,
+  suggestionsLimit: 5,
+  readerModeEnabled: false,
+  defaultZoom: 1,
+  downloadsPath: "",
+  privacyMode: "standard"
 };
 
 function loadSettings() {
-  if (!fs.existsSync(settingsPath)) {
-    fs.writeFileSync(settingsPath, JSON.stringify(defaultSettings, null, 2));
-    return defaultSettings;
-  }
-  return JSON.parse(fs.readFileSync(settingsPath));
+  const stored = readJson(settingsPath, {});
+  const merged = { ...defaultSettings, ...stored };
+  writeJson(settingsPath, merged);
+  return merged;
 }
 
 function saveSettings(settings) {
-  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
+  const merged = { ...defaultSettings, ...settings };
+  writeJson(settingsPath, merged);
+  return merged;
 }
 
-module.exports = { loadSettings, saveSettings };
+function updateSettings(partial) {
+  const current = loadSettings();
+  return saveSettings({ ...current, ...partial });
+}
+
+module.exports = { loadSettings, saveSettings, updateSettings, defaultSettings };

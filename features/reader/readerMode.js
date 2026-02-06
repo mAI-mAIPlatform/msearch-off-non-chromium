@@ -1,12 +1,16 @@
 function enableReaderMode() {
-  document.body.querySelector(".sidebar").style.display = "none";
-  document.body.querySelector(".topbar").style.display = "none";
+  const sidebar = document.body.querySelector(".sidebar");
+  const topbar = document.body.querySelector(".topbar");
+  if (sidebar) sidebar.style.display = "none";
+  if (topbar) topbar.style.display = "none";
   document.body.style.background = "#0a0a0a";
 }
 
 function disableReaderMode() {
-  document.body.querySelector(".sidebar").style.display = "flex";
-  document.body.querySelector(".topbar").style.display = "flex";
+  const sidebar = document.body.querySelector(".sidebar");
+  const topbar = document.body.querySelector(".topbar");
+  if (sidebar) sidebar.style.display = "flex";
+  if (topbar) topbar.style.display = "flex";
   document.body.style.background = "";
 }
 

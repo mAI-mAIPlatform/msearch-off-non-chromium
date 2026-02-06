@@ -3,25 +3,30 @@ const { BrowserView } = require("electron");
 let tabs = [];
 let currentTab = null;
 
-function createTab(win, url) {
+function createTab(win, url, options = {}) {
   const view = new BrowserView({
     webPreferences: {
       contextIsolation: true,
-      nodeIntegration: false
+      nodeIntegration: false,
+      ...options.webPreferences
     }
   });
 
   win.setBrowserView(view);
 
+  const bounds = options.bounds || {};
+
   view.setBounds({
-    x: 320,      // largeur sidebar mAI
-    y: 64,       // hauteur topbar
-    width: win.getBounds().width - 320,
-    height: win.getBounds().height - 64
+    x: bounds.x ?? 320,      // largeur sidebar mAI
+    y: bounds.y ?? 64,       // hauteur topbar
+    width: bounds.width ?? win.getBounds().width - 320,
+    height: bounds.height ?? win.getBounds().height - 64
   });
 
   view.setAutoResize({ width: true, height: true });
-  view.webContents.loadURL(url);
+  if (url) {
+    view.webContents.loadURL(url);
+  }
 
   const tab = {
     id: Date.now(),
