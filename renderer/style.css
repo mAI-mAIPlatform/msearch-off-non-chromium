@@ -1,64 +1,90 @@
-/* =========================
-   Style Liquid Glass mSearch
-=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    color: #fff;
+  height: 100vh;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color: white;
 }
 
-/* Titre */
-h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(255,255,255,0.4);
+/* Layout */
+.app {
+  display: flex;
+  height: 100vh;
 }
 
-/* Barre de recherche */
-input#search {
-    width: 60%;
-    padding: 12px 20px;
-    font-size: 18px;
-    border-radius: 25px;
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    color: #fff;
-    backdrop-filter: blur(10px);
-    transition: 0.3s all;
+/* SIDEBAR */
+.sidebar {
+  width: 320px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,0.15);
 }
 
-/* Effet au focus */
-input#search:focus {
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+.ai-frame {
+  flex: 1;
+  border-radius: 18px;
+  border: none;
+  margin-top: 10px;
 }
 
-/* Boutons (si tu veux ajouter plus tard) */
+.version {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.08);
+}
+
+/* SEARCH */
+#search {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  outline: none;
+}
+
+/* BUTTONS */
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
-    transition: 0.3s all;
+  padding: 8px 16px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  color: white;
 }
 
 button:hover {
-    background: rgba(255,255,255,0.3);
-    box-shadow: 0 5px 25px rgba(0,0,0,0.35);
+  background: rgba(255,255,255,0.4);
+}
+
+/* WELCOME */
+.welcome {
+  margin: auto;
+  text-align: center;
+  opacity: 0.85;
 }
