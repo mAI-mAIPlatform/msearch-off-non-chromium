@@ -4,6 +4,12 @@ const path = require("path");
 // Managers
 const history = require("./features/history/historyManager");
 const bookmarks = require("./features/bookmarks/bookmarksManager");
+const profiles = require("./features/profiles/profilesManager");
+const downloads = require("./features/downloads/downloadsManager");
+const reminders = require("./features/reminders/remindersManager");
+const notes = require("./features/notes/notesManager");
+const categories = require("./features/categories/categoriesManager");
+const tabGroups = require("./features/tabs/tabGroups");
 const settingsService = require("./features/settings/settingsManager");
 const versionData = require("./config/version.json");
 
@@ -12,7 +18,7 @@ let tabs = [];
 let currentTab = null;
 
 // ======================
-// ONGLET
+// ONGLET / TAB
 // ======================
 function createTab(url) {
   const view = new BrowserView({
@@ -27,8 +33,8 @@ function createTab(url) {
   const { width, height } = win.getBounds();
 
   view.setBounds({
-    x: 320,       // sidebar mAI
-    y: 70,        // topbar
+    x: 320,
+    y: 70,
     width: width - 320,
     height: height - 70
   });
@@ -36,7 +42,6 @@ function createTab(url) {
   view.setAutoResize({ width: true, height: true });
   view.webContents.loadURL(url);
 
-  // Historique automatique
   view.webContents.on("did-finish-load", () => {
     history.addHistory(view.webContents.getTitle(), view.webContents.getURL());
   });
@@ -47,7 +52,6 @@ function createTab(url) {
   return tab;
 }
 
-// Changer d'onglet
 function switchTab(id) {
   const tab = tabs.find(t => t.id === id);
   if (!tab) return;
@@ -56,7 +60,7 @@ function switchTab(id) {
 }
 
 // ======================
-// WINDOW
+// FENETRE
 // ======================
 function createWindow() {
   const logoPath = path.join(__dirname, "assets", "logo.png");
@@ -66,7 +70,7 @@ function createWindow() {
     width: 1400,
     height: 900,
     title: `mSearch v${versionData.version} ${versionData.channel} ${versionData.build}`,
-    icon, // 🔥 logo Windows
+    icon, // Logo Windows
     backgroundColor: "#0e0f12",
     webPreferences: {
       preload: path.join(__dirname, "preload.js")
@@ -89,9 +93,19 @@ ipcMain.on("navigate", (_, url) => {
 
 ipcMain.on("new-tab", (_, url) => createTab(url));
 
-ipcMain.on("bookmark", (_, data) => {
-  bookmarks.addBookmark(data.title, data.url);
-});
+ipcMain.on("bookmark", (_, data) => bookmarks.addBookmark(data.title, data.url));
+
+ipcMain.on("add-profile", (_, name) => profiles.createProfile(name));
+
+ipcMain.on("new-download", (_, file) => downloads.addDownload(file.name, file.url));
+
+ipcMain.on("add-reminder", (_, data) => reminders.addReminder(data.text, data.date));
+
+ipcMain.on("add-note", (_, data) => notes.addNote(data.title, data.content));
+
+ipcMain.on("add-category", (_, name) => categories.addCategory(name));
+
+ipcMain.on("new-tab-group", (_, name) => tabGroups.createGroup(name));
 
 // ======================
 app.whenReady().then(createWindow);
