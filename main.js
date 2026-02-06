@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
 let win;
@@ -10,7 +10,8 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
-      contextIsolation: true
+      contextIsolation: true,
+      webviewTag: true
     }
   });
 
@@ -18,9 +19,3 @@ function createWindow() {
 }
 
 app.whenReady().then(createWindow);
-
-// Navigation depuis la barre de recherche
-ipcMain.on('navigate', (event, url) => {
-  if (!url.startsWith('http')) url = 'https://' + url;
-  win.loadURL(url);
-});
