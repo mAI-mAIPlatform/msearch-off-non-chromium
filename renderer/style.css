@@ -1,0 +1,64 @@
+/* =========================
+   Style Liquid Glass mSearch
+=========================== */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+}
+
+/* Titre */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+/* Barre de recherche */
+input#search {
+    width: 60%;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    transition: 0.3s all;
+}
+
+/* Effet au focus */
+input#search:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* Boutons (si tu veux ajouter plus tard) */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    transition: 0.3s all;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.3);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.35);
+}
