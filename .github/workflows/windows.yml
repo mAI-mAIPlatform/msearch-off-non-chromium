@@ -26,5 +26,5 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: msearch-apps
+          name: msearch-apps-windows
           path: dist/**/*.exe
