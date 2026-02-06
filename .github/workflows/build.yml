@@ -1,6 +1,5 @@
 name: Build mSearch Windows
 
-# Déclenche le workflow à chaque push sur main
 on:
   push:
     branches: [main]
@@ -10,25 +9,20 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # 1️⃣ Récupérer le code du repo
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 2️⃣ Installer Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # 3️⃣ Installer les dépendances (Electron + electron-builder)
       - name: Install dependencies
         run: npm install
 
-      # 4️⃣ Compiler l'application en .exe
       - name: Build Electron app
-        run: npm run build
+        run: npm run build -- --publish never
 
-      # 5️⃣ Sauvegarder le .exe dans les artifacts pour téléchargement
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
