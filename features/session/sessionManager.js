@@ -1,15 +1,33 @@
-const fs = require("fs");
 const path = require("path");
+const { readJson, writeJson } = require("../storage/jsonStore");
 
 const file = path.join(__dirname, "lastSession.json");
 
-function saveTabState(tab) {
-  fs.writeFileSync(file, JSON.stringify(tab, null, 2));
+function saveTabState(tabState, meta = {}) {
+  const payload = {
+    tabState,
+    meta,
+    savedAt: new Date().toISOString()
+  };
+  writeJson(file, payload);
+  return payload;
+}
+
+function saveSession(tabs, activeTabId) {
+  return saveTabState(tabs, { activeTabId });
 }
 
 function loadLastSession() {
-  if (!fs.existsSync(file)) return null;
-  return JSON.parse(fs.readFileSync(file));
+  return readJson(file, null);
 }
 
-module.exports = { saveTabState, loadLastSession };
+function clearLastSession() {
+  writeJson(file, null);
+}
+
+module.exports = {
+  saveTabState,
+  saveSession,
+  loadLastSession,
+  clearLastSession
+};

@@ -1,6 +1,9 @@
-function normalize(input) {
+function normalize(input, options = {}) {
+  if (!input) return "";
+  const searchEngine = options.searchEngine || "https://www.google.com/search?q=";
+
   if (!input.includes(".") || input.includes(" ")) {
-    return "https://www.google.com/search?q=" + encodeURIComponent(input);
+    return searchEngine + encodeURIComponent(input);
   }
 
   if (!input.startsWith("http")) {
