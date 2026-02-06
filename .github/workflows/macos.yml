@@ -26,5 +26,5 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: msearch-apps-mac
+          name: msearch-apps-macos
           path: dist/**/*.app
