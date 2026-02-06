@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Paramètres – mSearch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="settings-container">
+
+    <h1>⚙️ Paramètres mSearch</h1>
+    <p class="settings-subtitle">Personnalise ton navigateur</p>
+
+    <!-- SECTION GÉNÉRAL -->
+    <section class="settings-section">
+      <h2>🌐 Général</h2>
+
+      <label class="toggle">
+        <input type="checkbox" id="autoHttps">
+        <span class="slider"></span>
+        <span class="label-text">Forcer HTTPS automatiquement</span>
+      </label>
+
+      <label class="toggle">
+        <input type="checkbox" id="rememberLastPage">
+        <span class="slider"></span>
+        <span class="label-text">Rouvrir la dernière page au démarrage</span>
+      </label>
+    </section>
+
+    <!-- SECTION INTERFACE -->
+    <section class="settings-section">
+      <h2>🎨 Interface</h2>
+
+      <label class="toggle">
+        <input type="checkbox" id="glassEffect">
+        <span class="slider"></span>
+        <span class="label-text">Effet Liquid Glass</span>
+      </label>
+
+      <label class="toggle">
+        <input type="checkbox" id="showSidebar">
+        <span class="slider"></span>
+        <span class="label-text">Afficher la barre mAI</span>
+      </label>
+    </section>
+
+    <!-- SECTION CONFIDENTIALITÉ -->
+    <section class="settings-section">
+      <h2>🔒 Confidentialité</h2>
+
+      <button class="danger">🗑️ Effacer l’historique (futur)</button>
+      <button class="danger">🧹 Réinitialiser les paramètres</button>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="settings-footer">
+      <p>mSearch — version <strong>26.7.0 Bêta 0.2</strong></p>
+      <button onclick="history.back()">⬅ Retour</button>
+    </div>
+
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
