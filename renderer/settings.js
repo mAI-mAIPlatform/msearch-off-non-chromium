@@ -1,25 +1,36 @@
-const settings = {
-  autoHttps: document.getElementById("autoHttps"),
-  rememberLastPage: document.getElementById("rememberLastPage"),
-  glassEffect: document.getElementById("glassEffect"),
-  showSidebar: document.getElementById("showSidebar")
-};
+const settingsService = require("../features/settings/settingsManager");
+const versionData = require("../config/version.json");
 
-// Charger paramètres
-Object.keys(settings).forEach(key => {
-  const saved = localStorage.getItem(key);
-  if (saved !== null) {
-    settings[key].checked = saved === "true";
+const settingsInputs = document.querySelectorAll("[data-setting]");
+const footer = document.querySelector(".settings-footer p");
+
+// ======================
+// Afficher version
+// ======================
+if (footer) {
+  footer.textContent =
+    `mSearch — version ${versionData.version} • ${versionData.channel} ${versionData.build}`;
+}
+
+// ======================
+// Charger les paramètres
+// ======================
+settingsInputs.forEach(input => {
+  const key = input.dataset.setting;
+  const value = settingsService.loadSettings()[key];
+  if (input.type === "checkbox") {
+    input.checked = value;
+  } else {
+    input.value = value;
   }
 
-  // Sauvegarder automatiquement
-  settings[key].addEventListener("change", () => {
-    localStorage.setItem(key, settings[key].checked);
+  input.addEventListener("change", () => {
+    const newSettings = settingsService.loadSettings();
+    if (input.type === "checkbox") {
+      newSettings[key] = input.checked;
+    } else {
+      newSettings[key] = input.value;
+    }
+    settingsService.saveSettings(newSettings);
   });
-});
-
-// Reset
-document.querySelectorAll(".danger")[1].addEventListener("click", () => {
-  localStorage.clear();
-  location.reload();
 });
