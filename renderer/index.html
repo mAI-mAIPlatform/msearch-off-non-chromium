@@ -6,17 +6,27 @@
   
   <!-- CSS Liquid Glass -->
   <link rel="stylesheet" href="style.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>mSearch 🚀</h1>
+  <nav id="controls">
+    <div class="nav-group">
+      <button id="backBtn" class="icon-btn"><span class="material-icons">arrow_back</span></button>
+      <button id="fwdBtn" class="icon-btn"><span class="material-icons">arrow_forward</span></button>
+      <button id="reloadBtn" class="icon-btn"><span class="material-icons">refresh</span></button>
+      <button id="homeBtn" class="icon-btn"><span class="material-icons">home</span></button>
+    </div>
     
-    <!-- Barre de recherche -->
-    <input type="text" id="search" placeholder="Tape un site, ex: google.com">
+    <div class="url-container">
+      <input type="text" id="search" placeholder="Search or enter address">
+    </div>
     
-    <!-- Exemple bouton futur (optionnel) -->
-    <button id="goBtn">Go</button>
-  </div>
+    <button id="goBtn" class="icon-btn"><span class="material-icons">arrow_forward_ios</span></button>
+  </nav>
+
+  <!-- Webview -->
+  <webview id="view" src="https://www.google.com" allowpopups></webview>
 
   <!-- JS pour navigation -->
   <script src="index.js"></script>
